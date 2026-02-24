@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TERRA ARTISAN - Premium Pottery</title>
+    <title>TERRA ARTISAN - Keramik Premium Indonesia</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -21,9 +21,8 @@
         }
 
         .poster-container {
-            width: 720px;
-            min-height: 1400px;
-            margin: 0 auto;
+            width: 100%;
+            min-height: 2400px;
             background: #F5F0E8;
             position: relative;
             overflow: hidden;
@@ -39,7 +38,7 @@
             background-image: url('https://sfile.chatglm.cn/images-ppt/38726b183ce5.jpg');
             background-size: cover;
             background-position: center;
-            opacity: 0.08;
+            opacity: 0.06;
             pointer-events: none;
             z-index: 1;
         }
@@ -48,13 +47,13 @@
         .palm-shadow {
             position: absolute;
             top: 50px;
-            right: -100px;
-            width: 600px;
-            height: 800px;
+            right: -150px;
+            width: 800px;
+            height: 1200px;
             background-image: url('https://sfile.chatglm.cn/images-ppt/dbda13b19f42.jpg');
             background-size: cover;
             background-position: center;
-            opacity: 0.12;
+            opacity: 0.10;
             pointer-events: none;
             z-index: 2;
             transform: rotate(15deg);
@@ -63,20 +62,27 @@
         .content-wrapper {
             position: relative;
             z-index: 10;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         /* Navigation */
         .nav {
-            padding: 40px 60px;
+            padding: 40px 80px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid rgba(193, 120, 94, 0.2);
+            background: rgba(245, 240, 232, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .nav-logo {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 600;
             color: #2C2C2C;
             letter-spacing: 4px;
@@ -84,11 +90,11 @@
 
         .nav-menu {
             display: flex;
-            gap: 32px;
+            gap: 48px;
         }
 
         .nav-item {
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 400;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -103,49 +109,94 @@
 
         /* Hero Section */
         .hero {
-            padding: 80px 60px 60px;
+            padding: 120px 80px 80px;
             position: relative;
         }
 
         .hero-content {
-            text-align: center;
-            margin-bottom: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
         }
 
-        .brand-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 64px;
-            font-weight: 300;
-            color: #2C2C2C;
-            letter-spacing: 12px;
-            margin-bottom: 24px;
-            line-height: 1.2;
+        .hero-text {
+            padding-right: 40px;
         }
 
         .tagline {
             font-size: 14px;
-            font-weight: 300;
+            font-weight: 400;
             letter-spacing: 4px;
             text-transform: uppercase;
             color: #C1785E;
-            margin-bottom: 12px;
+            margin-bottom: 24px;
+        }
+
+        .brand-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 82px;
+            font-weight: 300;
+            color: #2C2C2C;
+            letter-spacing: 8px;
+            margin-bottom: 32px;
+            line-height: 1.1;
         }
 
         .hero-description {
-            font-size: 16px;
-            line-height: 1.8;
+            font-size: 18px;
+            line-height: 1.9;
             color: #5A5A5A;
-            max-width: 500px;
-            margin: 0 auto;
+            margin-bottom: 40px;
             font-weight: 300;
         }
 
-        /* Featured Product with Parallax */
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 20px 48px;
+            background: #2C2C2C;
+            color: #F5F0E8;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(44, 44, 44, 0.2);
+            border: none;
+        }
+
+        .cta-button:hover {
+            background: #C1785E;
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(193, 120, 94, 0.3);
+        }
+
+        .cta-button-outline {
+            background: transparent;
+            border: 2px solid #2C2C2C;
+            color: #2C2C2C;
+        }
+
+        .cta-button-outline:hover {
+            background: #2C2C2C;
+            color: #F5F0E8;
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
         .featured-product {
             position: relative;
-            margin: 0 auto;
             width: 100%;
-            height: 500px;
+            height: 600px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -166,11 +217,11 @@
         }
 
         .product-image-main {
-            width: 480px;
-            height: 480px;
+            width: 500px;
+            height: 500px;
             object-fit: cover;
             border-radius: 50%;
-            box-shadow: 0 40px 80px rgba(44, 44, 44, 0.15);
+            box-shadow: 0 50px 100px rgba(44, 44, 44, 0.2);
             position: relative;
             z-index: 5;
         }
@@ -184,62 +235,62 @@
         }
 
         .kintsugi-line-1 {
-            width: 200px;
-            top: 150px;
-            left: 80px;
+            width: 250px;
+            top: 120px;
+            left: 60px;
             transform: rotate(-15deg);
         }
 
         .kintsugi-line-2 {
-            width: 180px;
-            bottom: 180px;
-            right: 70px;
+            width: 220px;
+            bottom: 140px;
+            right: 60px;
             transform: rotate(20deg);
         }
 
         .kintsugi-accent {
             position: absolute;
-            width: 8px;
-            height: 8px;
+            width: 12px;
+            height: 12px;
             background: #D4AF37;
             border-radius: 50%;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
             z-index: 7;
         }
 
         .kintsugi-accent-1 {
-            top: 145px;
-            left: 280px;
+            top: 115px;
+            left: 310px;
         }
 
         .kintsugi-accent-2 {
-            bottom: 175px;
-            right: 160px;
+            bottom: 135px;
+            right: 170px;
         }
 
-        /* Product Showcase Section */
+        /* Products Showcase */
         .products-section {
-            padding: 80px 60px;
+            padding: 100px 80px;
             background: linear-gradient(180deg, transparent 0%, rgba(193, 120, 94, 0.05) 100%);
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 80px;
         }
 
         .section-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 42px;
+            font-size: 56px;
             font-weight: 400;
             color: #2C2C2C;
             letter-spacing: 3px;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
 
         .section-subtitle {
-            font-size: 13px;
-            letter-spacing: 2px;
+            font-size: 14px;
+            letter-spacing: 3px;
             text-transform: uppercase;
             color: #8B7355;
         }
@@ -247,14 +298,14 @@
         .products-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+            gap: 32px;
         }
 
         .product-card {
-            background: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(10px);
-            border-radius: 16px;
-            padding: 24px;
+            border-radius: 20px;
+            padding: 32px;
             transition: all 0.4s ease;
             border: 1px solid rgba(193, 120, 94, 0.15);
             position: relative;
@@ -268,14 +319,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, transparent 50%);
             opacity: 0;
             transition: opacity 0.4s ease;
         }
 
         .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(44, 44, 44, 0.12);
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(44, 44, 44, 0.15);
         }
 
         .product-card:hover::before {
@@ -284,51 +335,159 @@
 
         .product-image {
             width: 100%;
-            height: 180px;
+            height: 280px;
             object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 20px;
+            border-radius: 16px;
+            margin-bottom: 24px;
         }
 
         .product-name {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 22px;
+            font-size: 28px;
             font-weight: 600;
             color: #2C2C2C;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         .product-description {
-            font-size: 13px;
-            line-height: 1.6;
+            font-size: 14px;
+            line-height: 1.7;
             color: #6B6B6B;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
         }
 
         .product-price {
-            font-size: 18px;
+            font-size: 22px;
             font-weight: 500;
             color: #C1785E;
         }
 
-        /* Craftsmanship Section */
-        .craftsmanship {
-            padding: 100px 60px;
-            position: relative;
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 100px 80px;
+            background: rgba(255, 255, 255, 0.5);
         }
 
-        .craftsmanship-content {
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 60px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 16px;
+            padding: 40px 32px;
+            border: 1px solid rgba(193, 120, 94, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(44, 44, 44, 0.1);
+        }
+
+        .stars {
+            color: #D4AF37;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-text {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #5A5A5A;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2C2C2C;
+            margin-bottom: 4px;
+        }
+
+        .testimonial-location {
+            font-size: 13px;
+            color: #8B7355;
+        }
+
+        /* How to Order Section */
+        .order-section {
+            padding: 100px 80px;
+        }
+
+        .order-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .order-step {
+            text-align: center;
+            padding: 32px 20px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 16px;
+            border: 1px solid rgba(193, 120, 94, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .order-step:hover {
+            background: rgba(193, 120, 94, 0.08);
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #C1785E, #D4AF37);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 600;
+            margin: 0 auto 24px;
+        }
+
+        .step-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: #2C2C2C;
+            margin-bottom: 12px;
+        }
+
+        .step-description {
+            font-size: 13px;
+            line-height: 1.7;
+            color: #6B6B6B;
+        }
+
+        /* About Business Section */
+        .about-section {
+            padding: 100px 80px;
+            background: linear-gradient(180deg, rgba(193, 120, 94, 0.05) 0%, transparent 100%);
+        }
+
+        .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 80px;
             align-items: center;
+            margin-top: 60px;
         }
 
-        .craftsmanship-text {
+        .about-text {
             padding-right: 40px;
         }
 
-        .craftsmanship-title {
+        .about-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: 48px;
             font-weight: 400;
@@ -338,125 +497,172 @@
             line-height: 1.3;
         }
 
-        .craftsmanship-paragraph {
-            font-size: 15px;
+        .about-paragraph {
+            font-size: 16px;
             line-height: 1.9;
             color: #5A5A5A;
             margin-bottom: 24px;
             font-weight: 300;
         }
 
-        .craftsmanship-image-container {
-            position: relative;
+        .about-highlights {
+            display: flex;
+            gap: 40px;
+            margin-top: 32px;
         }
 
-        .craftsmanship-image {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 16px;
-            box-shadow: 0 30px 60px rgba(44, 44, 44, 0.12);
-        }
-
-        .kintsugi-decoration {
-            position: absolute;
-            width: 150px;
-            height: 2px;
-            background: linear-gradient(90deg, #D4AF37, transparent);
-            transform: rotate(45deg);
-        }
-
-        .kintsugi-dec-1 {
-            top: -20px;
-            right: -20px;
-        }
-
-        .kintsugi-dec-2 {
-            bottom: -20px;
-            left: -20px;
-        }
-
-        /* Call to Action */
-        .cta-section {
-            padding: 80px 60px 100px;
+        .highlight-item {
             text-align: center;
-            position: relative;
         }
 
-        .cta-title {
+        .highlight-number {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 38px;
-            font-weight: 400;
-            color: #2C2C2C;
-            letter-spacing: 2px;
+            font-size: 42px;
+            font-weight: 700;
+            color: #C1785E;
+            margin-bottom: 8px;
+        }
+
+        .highlight-text {
+            font-size: 13px;
+            color: #6B6B6B;
+            letter-spacing: 1px;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(44, 44, 44, 0.15);
+        }
+
+        /* Business Development Tips */
+        .tips-section {
+            padding: 100px 80px;
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            margin-top: 60px;
+        }
+
+        .tip-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            padding: 40px 32px;
+            border-left: 4px solid #C1785E;
+            transition: all 0.3s ease;
+        }
+
+        .tip-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 35px rgba(44, 44, 44, 0.1);
+        }
+
+        .tip-icon {
+            font-size: 48px;
+            color: #C1785E;
             margin-bottom: 20px;
         }
 
-        .cta-text {
+        .tip-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            font-weight: 600;
+            color: #2C2C2C;
+            margin-bottom: 16px;
+        }
+
+        .tip-description {
             font-size: 14px;
-            color: #6B6B6B;
-            margin-bottom: 40px;
             line-height: 1.8;
+            color: #6B6B6B;
         }
 
-        .cta-button {
-            display: inline-block;
-            padding: 18px 48px;
-            background: #2C2C2C;
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 80px;
+            background: linear-gradient(135deg, rgba(44, 44, 44, 0.95), rgba(193, 120, 94, 0.9));
             color: #F5F0E8;
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(44, 44, 44, 0.2);
         }
 
-        .cta-button:hover {
-            background: #C1785E;
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(193, 120, 94, 0.3);
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-info h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+
+        .contact-icon {
+            font-size: 24px;
+            color: #D4AF37;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 32px;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #F5F0E8;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .social-link:hover {
+            background: #D4AF37;
+            transform: translateY(-5px);
         }
 
         /* Footer */
         .footer {
-            padding: 40px 60px;
+            padding: 40px 80px;
             border-top: 1px solid rgba(193, 120, 94, 0.2);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: #F5F0E8;
         }
 
         .footer-logo {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 20px;
+            font-size: 24px;
             font-weight: 600;
             color: #2C2C2C;
             letter-spacing: 3px;
         }
 
         .footer-text {
-            font-size: 12px;
+            font-size: 13px;
             color: #8B7355;
             letter-spacing: 1px;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 20px;
-        }
-
-        .social-icon {
-            font-size: 20px;
-            color: #8B7355;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .social-icon:hover {
-            color: #C1785E;
         }
 
         /* Material Icons */
@@ -475,6 +681,78 @@
             -webkit-font-feature-settings: 'liga';
             -webkit-font-smoothing: antialiased;
         }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+            
+            .hero-text {
+                padding-right: 0;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .order-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                padding: 20px 30px;
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-menu {
+                gap: 20px;
+            }
+            
+            .hero {
+                padding: 60px 30px;
+            }
+            
+            .brand-title {
+                font-size: 52px;
+                letter-spacing: 4px;
+            }
+            
+            .products-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .order-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .products-section,
+            .testimonials-section,
+            .order-section,
+            .about-section,
+            .tips-section,
+            .contact-section {
+                padding: 60px 30px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -488,105 +766,283 @@
             <nav class="nav">
                 <div class="nav-logo">TERRA ARTISAN</div>
                 <div class="nav-menu">
-                    <span class="nav-item">Collections</span>
-                    <span class="nav-item">About</span>
-                    <span class="nav-item">Contact</span>
+                    <span class="nav-item">Koleksi</span>
+                    <span class="nav-item">Tentang</span>
+                    <span class="nav-item">Kisah Kami</span>
+                    <span class="nav-item">Kontak</span>
                 </div>
             </nav>
 
             <!-- Hero Section -->
             <section class="hero">
                 <div class="hero-content">
-                    <div class="tagline">Premium Handmade Pottery</div>
-                    <h1 class="brand-title">TERRA ARTISAN</h1>
-                    <p class="hero-description">
-                        Discover the timeless beauty of handcrafted ceramics, where traditional Indonesian artistry meets contemporary elegance. Each piece tells a story of heritage and craftsmanship.
-                    </p>
-                </div>
+                    <div class="hero-text">
+                        <div class="tagline">Keramik Premium Buatan Tangan</div>
+                        <h1 class="brand-title">TERRA ARTISAN</h1>
+                        <p class="hero-description">
+                            Temukan keindahan abadi keramik buatan tangan, di mana seni tradisional Indonesia bertemu dengan elegansi kontemporer. Setiap karya menceritakan kisah warisan dan keahlian pengrajin.
+                        </p>
+                        <div class="hero-buttons">
+                            <button class="cta-button">Lihat Koleksi</button>
+                            <button class="cta-button cta-button-outline">Hubungi Kami</button>
+                        </div>
+                    </div>
 
-                <div class="featured-product">
-                    <!-- Parallax Layers -->
-                    <div class="parallax-layer-1"></div>
-                    <div class="parallax-layer-2"></div>
-                    
-                    <!-- Main Product Image -->
-                    <img src="https://sfile.chatglm.cn/images-ppt/47efaee9a1ae.jpg" alt="Premium Ceramic Vases" class="product-image-main">
-                    
-                    <!-- Kintsugi Decorative Lines -->
-                    <div class="kintsugi-line kintsugi-line-1"></div>
-                    <div class="kintsugi-line kintsugi-line-2"></div>
-                    <div class="kintsugi-accent kintsugi-accent-1"></div>
-                    <div class="kintsugi-accent kintsugi-accent-2"></div>
+                    <div class="hero-visual">
+                        <div class="featured-product">
+                            <div class="parallax-layer-1"></div>
+                            <div class="parallax-layer-2"></div>
+                            
+                            <img src="https://sfile.chatglm.cn/images-ppt/47efaee9a1ae.jpg" alt="Vas Keramik Premium" class="product-image-main">
+                            
+                            <div class="kintsugi-line kintsugi-line-1"></div>
+                            <div class="kintsugi-line kintsugi-line-2"></div>
+                            <div class="kintsugi-accent kintsugi-accent-1"></div>
+                            <div class="kintsugi-accent kintsugi-accent-2"></div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
             <!-- Products Showcase -->
             <section class="products-section">
                 <div class="section-header">
-                    <div class="section-subtitle">Featured Collection</div>
-                    <h2 class="section-title">Artisan Series</h2>
+                    <div class="section-subtitle">Koleksi Unggulan</div>
+                    <h2 class="section-title">Seri Artisan</h2>
                 </div>
 
                 <div class="products-grid">
                     <div class="product-card">
-                        <img src="https://sfile.chatglm.cn/images-ppt/9a335eff406b.jpg" alt="Terracotta Vase" class="product-image">
-                        <h3 class="product-name">Sukma Vase</h3>
-                        <p class="product-description">Hand-thrown terracotta vase with organic silhouette, 800ml capacity</p>
-                        <div class="product-price">$185</div>
+                        <img src="https://sfile.chatglm.cn/images-ppt/9a335eff406b.jpg" alt="Vas Terracotta" class="product-image">
+                        <h3 class="product-name">Vas Sukma</h3>
+                        <p class="product-description">Vas terracotta buatan tangan dengan siluet organik, kapasitas 800ml, dibuat oleh pengrajin lokal berpengalaman</p>
+                        <div class="product-price">Rp 2.850.000</div>
                     </div>
 
                     <div class="product-card">
-                        <img src="https://sfile.chatglm.cn/images-ppt/e9f667a41ff5.jpg" alt="Minimalist Vase" class="product-image">
-                        <h3 class="product-name">Arya Vessel</h3>
-                        <p class="product-description">Cream ceramic with vertical ridges, inspired by ancient Indonesian pottery</p>
-                        <div class="product-price">$220</div>
+                        <img src="https://sfile.chatglm.cn/images-ppt/e9f667a41ff5.jpg" alt="Vas Minimalis" class="product-image">
+                        <h3 class="product-name">Wadah Arya</h3>
+                        <p class="product-description">Keramik krem dengan tekstur vertikal, terinspirasi dari tembikar kuno Nusantara, cocok untuk dekorasi interior modern</p>
+                        <div class="product-price">Rp 3.200.000</div>
                     </div>
 
                     <div class="product-card">
-                        <img src="https://sfile.chatglm.cn/images-ppt/05c5c5e93bdd.jpg" alt="Ceramic Jar" class="product-image">
-                        <h3 class="product-name">Bumi Jar</h3>
-                        <p class="product-description">Grey ceramic storage jar, 50cm height, perfect for contemporary spaces</p>
-                        <div class="product-price">$295</div>
+                        <img src="https://sfile.chatglm.cn/images-ppt/05c5c5e93bdd.jpg" alt="Stoples Keramik" class="product-image">
+                        <h3 class="product-name">Stoples Bumi</h3>
+                        <p class="product-description">Stoples keramik abu-abu dengan tinggi 50cm, sempurna untuk penyimpanan elegan dan dekorasi ruang kontemporer</p>
+                        <div class="product-price">Rp 4.500.000</div>
                     </div>
                 </div>
             </section>
 
-            <!-- Craftsmanship Section -->
-            <section class="craftsmanship">
-                <div class="craftsmanship-content">
-                    <div class="craftsmanship-text">
-                        <h2 class="craftsmanship-title">The Art of Kintsugi</h2>
-                        <p class="craftsmanship-paragraph">
-                            In Japanese philosophy, kintsugi teaches us to embrace imperfection. Our pottery celebrates the beauty of handcrafted uniqueness, where each crack and line becomes a golden testament to authenticity.
-                        </p>
-                        <p class="craftsmanship-paragraph">
-                            Every piece carries the soul of its maker, blending traditional Indonesian techniques with modern minimalist aesthetics. This is pottery that tells stories, not just shapes.
-                        </p>
+            <!-- Testimonials Section -->
+            <section class="testimonials-section">
+                <div class="section-header">
+                    <div class="section-subtitle">Apa Kata Mereka</div>
+                    <h2 class="section-title">Testimoni Pelanggan</h2>
+                </div>
+
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="testimonial-text">"Keramik yang luar biasa indah! Detail kintsugi emas membuat setiap karya terasa sangat istimewa dan berkelas. Kualitas premium yang sebanding dengan harga."</p>
+                        <div class="testimonial-author">Ratna Dewi</div>
+                        <div class="testimonial-location">Jakarta Selatan</div>
                     </div>
-                    <div class="craftsmanship-image-container">
-                        <img src="https://sfile.chatglm.cn/images-ppt/97a3536f2925.jpg" alt="Kintsugi Art" class="craftsmanship-image">
-                        <div class="kintsugi-decoration kintsugi-dec-1"></div>
-                        <div class="kintsugi-decoration kintsugi-dec-2"></div>
+
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="testimonial-text">"Saya memesan vas untuk hadiah ulang tahun, dan penerimanya sangat terkesan. Pengemasan sangat rapi dan pengiriman cepat. Highly recommended!"</p>
+                        <div class="testimonial-author">Ahmad Yusuf</div>
+                        <div class="testimonial-location">Bandung</div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="stars">★★★★★</div>
+                        <p class="testimonial-text">"Sebagai desainer interior, saya sangat terkesan dengan kualitas dan estetika Terra Artisan. Cocok untuk proyek-proyek premium klien saya."</p>
+                        <div class="testimonial-author">Maya Kusuma</div>
+                        <div class="testimonial-location">Surabaya</div>
                     </div>
                 </div>
             </section>
 
-            <!-- Call to Action -->
-            <section class="cta-section">
-                <h2 class="cta-title">Begin Your Collection</h2>
-                <p class="cta-text">Each piece is handmade with love and precision. Limited quantities available.</p>
-                <button class="cta-button">Explore Collection</button>
+            <!-- How to Order Section -->
+            <section class="order-section">
+                <div class="section-header">
+                    <div class="section-subtitle">Pesan dengan Mudah</div>
+                    <h2 class="section-title">Cara Pemesanan</h2>
+                </div>
+
+                <div class="order-steps">
+                    <div class="order-step">
+                        <div class="step-number">1</div>
+                        <h4 class="step-title">Pilih Produk</h4>
+                        <p class="step-description">Jelajahi koleksi kami dan pilih keramik favorit Anda</p>
+                    </div>
+
+                    <div class="order-step">
+                        <div class="step-number">2</div>
+                        <h4 class="step-title">Hubungi Kami</h4>
+                        <p class="step-description">Chat via WhatsApp untuk konfirmasi pesanan dan stok</p>
+                    </div>
+
+                    <div class="order-step">
+                        <div class="step-number">3</div>
+                        <h4 class="step-title">Pembayaran</h4>
+                        <p class="step-description">Transfer ke rekening atau e-wallet yang disediakan</p>
+                    </div>
+
+                    <div class="order-step">
+                        <div class="step-number">4</div>
+                        <h4 class="step-title">Pengiriman</h4>
+                        <p class="step-description">Kami kirim dengan aman ke seluruh Indonesia</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Business Section -->
+            <section class="about-section">
+                <div class="section-header">
+                    <div class="section-subtitle">Tentang Kami</div>
+                    <h2 class="section-title">Cerita Terra Artisan</h2>
+                </div>
+
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3 class="about-title">Melestarikan Seni Keramik Nusantara</h3>
+                        <p class="about-paragraph">
+                            Terra Artisan lahir dari kecintaan terhadap seni keramik tradisional Indonesia. Didirikan pada tahun 2018, kami berkomitmen untuk mengangkat keindahan kerajinan lokal ke pasar premium dengan sentuhan kontemporer.
+                        </p>
+                        <p class="about-paragraph">
+                            Setiap karya kami dibuat oleh pengrajin terampil yang telah mewarisi keahlian turun-temurun. Filosofi kintsugi mengajarkan kami untuk merayakan keunikan dan ketidaksempurnaan sebagai keindahan yang autentik.
+                        </p>
+                        
+                        <div class="about-highlights">
+                            <div class="highlight-item">
+                                <div class="highlight-number">500+</div>
+                                <div class="highlight-text">Karya Terjual</div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-number">15</div>
+                                <div class="highlight-text">Pengrajin Aktif</div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-number">98%</div>
+                                <div class="highlight-text">Kepuasan Pelanggan</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <img src="https://sfile.chatglm.cn/images-ppt/97a3536f2925.jpg" alt="Kintsugi Art" class="about-image">
+                </div>
+            </section>
+
+            <!-- Business Development Tips -->
+            <section class="tips-section">
+                <div class="section-header">
+                    <div class="section-subtitle">Pengembangan UMKM</div>
+                    <h2 class="section-title">Strategi Pertumbuhan Bisnis</h2>
+                </div>
+
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <i class="material-icons tip-icon">handshake</i>
+                        <h4 class="tip-title">Kolaborasi Desainer Interior</h4>
+                        <p class="tip-description">Bangun kemitraan dengan desainer interior dan arsitek untuk menjadi supplier keramik eksklusif proyek-proyek premium. Tawarkan program komisi menarik untuk setiap referral.</p>
+                    </div>
+
+                    <div class="tip-card">
+                        <i class="material-icons tip-icon">school</i>
+                        <h4 class="tip-title">Workshop Keramik</h4>
+                        <p class="tip-description">Selenggarakan kelas workshop offline dan online untuk menambah pendapatan sekaligus membangun komunitas pecinta keramik. Jadikan ini sebagai experiential marketing yang powerful.</p>
+                    </div>
+
+                    <div class="tip-card">
+                        <i class="material-icons tip-icon">shopping_cart</i>
+                        <h4 class="tip-title">Ekspansi Marketplace</h4>
+                        <p class="tip-description">Jual di marketplace premium seperti Tokopedia, Shopee Premium, dan Etsy untuk menjangkau pasar internasional. Optimalkan foto produk dan deskripsi untuk meningkatkan konversi.</p>
+                    </div>
+
+                    <div class="tip-card">
+                        <i class="material-icons tip-icon">share</i>
+                        <h4 class="tip-title">Content Marketing Sosmed</h4>
+                        <p class="tip-description">Buat konten YouTube dan TikTok tentang proses pembuatan keramik, behind the scenes, dan cerita pengrajin. Bangun personal brand yang autentik dan engaging untuk menarik audiens.</p>
+                    </div>
+
+                    <div class="tip-card">
+                        <i class="material-icons tip-icon">language</i>
+                        <h4 class="tip-title">Ekspor ke Pasar Global</h4>
+                        <p class="tip-description">Riset pasar internasional di negara-negara seperti Singapura, Australia, dan Eropa. Dapatkan sertifikasi ekspor dan ikuti pameran kerajinan internasional untuk memperluas jaringan.</p>
+                    </div>
+
+                    <div class="tip-card">
+                        <i class="material-icons tip-icon">inventory_2</i>
+                        <h4 class="tip-title">Pengembangan Produk Baru</h4>
+                        <p class="tip-description">Inovasi dengan lini produk baru seperti peralatan makan keramik, hiasan dinding, atau kolaborasi dengan brand fashion. Tawarkan custom order untuk segmen premium dan korporasi.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="contact-section">
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Hubungi Kami</h3>
+                        <div class="contact-item">
+                            <i class="material-icons contact-icon">location_on</i>
+                            <span>Jl. Raya Keramik No. 88, Kasongan, Bantul, Yogyakarta 55714</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="material-icons contact-icon">phone</i>
+                            <span>+62 812 3456 7890</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="material-icons contact-icon">email</i>
+                            <span>hello@terraartisan.id</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="material-icons contact-icon">schedule</i>
+                            <span>Senin - Sabtu: 09.00 - 17.00 WIB</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-info">
+                        <h3>Media Sosial</h3>
+                        <div class="social-links">
+                            <div class="social-link">
+                                <i class="material-icons">camera_alt</i>
+                            </div>
+                            <div class="social-link">
+                                <i class="material-icons">facebook</i>
+                            </div>
+                            <div class="social-link">
+                                <i class="material-icons">play_circle</i>
+                            </div>
+                        </div>
+                        <div style="margin-top: 40px;">
+                            <p style="font-size: 14px; line-height: 1.8;">
+                                Follow kami untuk update produk terbaru, promo eksklusif, dan cerita di balik setiap karya keramik.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info">
+                        <h3>Pesan via WhatsApp</h3>
+                        <p style="font-size: 14px; line-height: 1.8; margin-bottom: 24px;">
+                            Chat langsung dengan tim kami untuk konsultasi produk, custom order, atau pertanyaan lainnya. Kami siap membantu!
+                        </p>
+                        <button class="cta-button" style="background: #25D366;">
+                            <i class="material-icons" style="vertical-align: middle; margin-right: 8px;">chat</i>
+                            Chat WhatsApp
+                        </button>
+                    </div>
+                </div>
             </section>
 
             <!-- Footer -->
             <footer class="footer">
                 <div class="footer-logo">TERRA ARTISAN</div>
-                <div class="footer-text">© 2024 Handcrafted in Indonesia</div>
-                <div class="social-icons">
-                    <i class="material-icons social-icon">favorite</i>
-                    <i class="material-icons social-icon">share</i>
-                    <i class="material-icons social-icon">language</i>
-                </div>
+                <div class="footer-text">© 2024 Kerajinan Premium Indonesia | Dibuat dengan Cinta</div>
             </footer>
         </div>
     </div>
@@ -611,12 +1067,12 @@
         });
 
         // Product card hover effects
-        document.querySelectorAll('.product-card').forEach(card => {
+        document.querySelectorAll('.product-card, .tip-card, .order-step, .testimonial-card').forEach(card => {
             card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-8px)';
+                this.style.transform = this.classList.contains('tip-card') ? 'translateX(10px)' : 'translateY(-8px)';
             });
             card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0)';
+                this.style.transform = 'translateY(0) translateX(0)';
             });
         });
     </script>
