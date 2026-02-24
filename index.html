@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artisan Charcoal | Premium Briquettes</title>
+    
+    <!-- Google Fonts: Playfair Display & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <!-- Framer Motion -->
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+    
+    <!-- Babel untuk JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Konfigurasi Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deepCharcoal: '#1A1A1A',
+                        warmOffWhite: '#F9F8F6',
+                        mutedGold: '#D4AF37',
+                        softTerracotta: '#C07050',
+                        grayDark: '#222222',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    },
+                    letterSpacing: {
+                        widest: '.2em',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #1A1A1A; }
+        /* Hide scrollbar for clean look but keep functionality */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #111; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
+    </style>
+</head>
+<body class="text-warmOffWhite font-sans antialiased overflow-x-hidden">
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+        const { motion, useScroll, useTransform, AnimatePresence } = window.Motion;
+
+        // --- Icons ---
+        const IconFire = ({ className }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" /></svg>
+        );
+        const IconWind = ({ className }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2" /><path d="M9.6 4.6A2 2 0 1 1 11 8H2" /><path d="M12.6 19.4A2 2 0 1 0 14 16H2" /></svg>
+        );
+        const IconClock = ({ className }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg>
+        );
+        const IconCheck = ({ className }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><polyline points="20 6 9 17 4 12" /></svg>
+        );
+        const IconArrowRight = ({ className }) => (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className={className}><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
+        );
+
+        // --- Components ---
+
+        const Navbar = () => {
+            const [scrolled, setScrolled] = useState(false);
+            useEffect(() => {
+                const handleScroll = () => setScrolled(window.scrollY > 50);
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            return (
+                <motion.nav
+                    initial={{ y: -100 }}
+                    animate={{ y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className={`fixed top-0 w-full z-50 transition-all duration-500 ${scrolled ? 'bg-deepCharcoal/95 backdrop-blur-md py-4 border-b border-white/5' : 'bg-transparent py-6'}`}
+                >
+                    <div className="container mx-auto px-6 flex justify-between items-center">
+                        <a href="#" className="font-serif text-2xl tracking-widest text-warmOffWhite font-bold">
+                            ARTISAN<span className="text-mutedGold">.</span>
+                        </a>
+                        <div className="hidden md:flex space-x-8">
+                            {['Beranda', 'Proses', 'Galeri', 'Keunggulan', 'Pemesanan'].map((item) => (
+                                <a key={item} href={`#${item.toLowerCase()}`} className="text-xs uppercase tracking-widest hover:text-mutedGold transition-colors">
+                                    {item}
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                </motion.nav>
+            );
+        };
+
+        const Hero = () => {
+            const ref = useRef(null);
+            const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+            const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
+            const opacityText = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+            const yText = useTransform(scrollYProgress, [0, 0.5], ["0%", "30px"]);
+
+            return (
+                <section ref={ref} className="relative h-screen w-full overflow-hidden flex items-center justify-center">
+                    {/* Background Image - Charcoal Texture */}
+                    <motion.div style={{ y: yBg }} className="absolute inset-0 z-0">
+                        <img 
+                            src="https://picsum.photos/seed/charcoaldark/1920/1080" 
+                            alt="Charcoal Texture"
+                            className="w-full h-full object-cover object-center brightness-40 grayscale-[20%]"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-deepCharcoal via-transparent to-black/40"></div>
+                    </motion.div>
+
+                    <motion.div style={{ opacity: opacityText, y: yText }} className="relative z-10 text-center max-w-4xl px-6">
+                        <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="text-mutedGold uppercase tracking-[0.3em] text-xs font-bold mb-6">
+                            100% Natural Coconut Shell
+                        </motion.p>
+                        <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-warmOffWhite leading-tight mb-6">
+                            The Art of <br/><span className="italic text-mutedGold">Perfect Heat</span>
+                        </h1>
+                        <p className="text-gray-300 font-light text-lg mb-10 max-w-2xl mx-auto">
+                            Menghadirkan kehangatan murni dari batok kelapa pilihan. Asap rendah, panas stabil, dan ramah lingkungan.
+                        </p>
+                        <motion.a 
+                            href="#pemesanan"
+                            initial={{ opacity: 0 }} 
+                            animate={{ opacity: 1 }} 
+                            transition={{ delay: 0.8 }}
+                            className="inline-block border border-mutedGold/60 text-mutedGold px-8 py-3 hover:bg-mutedGold hover:text-deepCharcoal transition-all duration-300 uppercase tracking-widest text-xs"
+                        >
+                            Lihat Koleksi
+                        </motion.a>
+                    </motion.div>
+                </section>
+            );
+        };
+
+        // 1. NEW: Parallax Breaker (Visual Rest)
+        const ParallaxBreaker = () => {
+            const ref = useRef(null);
+            const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+            const scale = useTransform(scrollYProgress, [0, 1], [1.1, 1]);
+
+            return (
+                <section ref={ref} className="relative h-[60vh] w-full overflow-hidden my-20">
+                    <motion.div style={{ scale }} className="absolute inset-0">
+                        <img src="https://picsum.photos/seed/fireembers/1920/1000" alt="Embers" className="w-full h-full object-cover" />
+                        <div className="absolute inset-0 bg-black/50"></div>
+                    </motion.div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="text-center border-y border-white/20 py-8 px-12 backdrop-blur-sm bg-black/20">
+                            <span className="font-serif text-3xl md:text-5xl italic text-warmOffWhite">Pure Energy</span>
+                            <p className="mt-2 text-xs tracking-widest uppercase text-mutedGold">Since 2023</p>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        // 2. NEW: Process Timeline (Visualizing Briquette Making)
+        const Process = () => {
+            const steps = [
+                { title: "Seleksi Batok", desc: "Hanya batok kelapa matang pilihan yang terbaik.", img: "https://picsum.photos/seed/coconut/600/400" },
+                { title: "Karbonisasi", desc: "Pembakaran terkendali tanpa oksigen untuk menghasilkan arang murni.", img: "https://picsum.photos/seed/firewood/600/400" },
+                { title: "Penghalusan & Adonan", desc: "Arang dihaluskan menjadi bubuk halus dan dicampur binder alami.", img: "https://picsum.photos/seed/powder/600/400" },
+                { title: "Pencetakan Briket", desc: "Dipress mesin hidrolik presisi tinggi membentuk kubik sempurna.", img: "https://picsum.photos/seed/machine/600/400" },
+                { title: "Pengeringan Matahari", desc: "Dikeringkan alami di bawah sinar matahari tropis.", img: "https://picsum.photos/seed/sunlight/600/400" },
+            ];
+
+            return (
+                <section id="proses" className="py-24 bg-[#111]">
+                    <div className="container mx-auto px-6">
+                        <div className="text-center mb-20">
+                            <span className="text-mutedGold uppercase tracking-[0.2em] text-xs font-bold">Craftsmanship</span>
+                            <h2 className="font-serif text-4xl md:text-5xl text-warmOffWhite mt-4">Dari Alam untuk Anda</h2>
+                        </div>
+
+                        <div className="space-y-24">
+                            {steps.map((step, idx) => (
+                                <motion.div 
+                                    key={idx}
+                                    initial={{ opacity: 0, y: 50 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, margin: "-100px" }}
+                                    transition={{ duration: 0.8, delay: idx * 0.1 }}
+                                    className={`flex flex-col md:flex-row items-center gap-12 ${idx % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
+                                >
+                                    <div className="w-full md:w-1/2 relative group">
+                                        <div className="absolute -inset-2 border border-mutedGold/30 translate-x-2 translate-y-2 -z-10 group-hover:translate-x-3 group-hover:translate-y-3 transition-transform duration-500"></div>
+                                        <img src={step.img} alt={step.title} className="w-full h-[350px] object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+                                    </div>
+                                    <div className="w-full md:w-1/2">
+                                        <span className="text-softTerracotta font-mono text-sm mb-2 block">0{idx + 1} // PROCESS</span>
+                                        <h3 className="font-serif text-3xl text-warmOffWhite mb-4">{step.title}</h3>
+                                        <p className="text-gray-400 font-light leading-relaxed border-l-2 border-mutedGold/30 pl-6">
+                                            {step.desc}
+                                        </p>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        // 3. NEW: Product Gallery (Grid Layout)
+        const Gallery = () => {
+            return (
+                <section id="galeri" className="py-24 bg-deepCharcoal">
+                    <div className="container mx-auto px-6">
+                        <div className="flex flex-col md:flex-row justify-between items-end mb-16">
+                            <div>
+                                <span className="text-mutedGold uppercase tracking-[0.2em] text-xs font-bold">Showcase</span>
+                                <h2 className="font-serif text-4xl md:text-5xl text-warmOffWhite mt-4">Bentuk & Kualitas</h2>
+                            </div>
+                            <p className="text-gray-400 max-w-xs mt-6 md:mt-0 text-sm">
+                                Tersedia dalam berbagai varian bentuk untuk kebutuhan Shisha, BBQ, maupun Industri.
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px]">
+                            {/* Large Item */}
+                            <motion.div 
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
+                                className="md:col-span-2 md:row-span-2 relative overflow-hidden group"
+                            >
+                                <img src="https://picsum.photos/seed/bbqmeat/800/800" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Hexagonal Briquettes" />
+                                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                                    <span className="text-warmOffWhite font-serif text-2xl border-b border-mutedGold pb-2">Hexagonal Premium</span>
+                                </div>
+                            </motion.div>
+
+                            {/* Small Item 1 */}
+                            <motion.div 
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.2 }}
+                                className="relative overflow-hidden group"
+                            >
+                                <img src="https://picsum.photos/seed/cubes/400/400" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Cube Briquettes" />
+                                <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                                    <span className="text-warmOffWhite font-serif text-xl">Cube Shisha</span>
+                                </div>
+                            </motion.div>
+
+                            {/* Small Item 2 */}
+                            <motion.div 
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.3 }}
+                                className="relative overflow-hidden group"
+                            >
+                                <img src="https://picsum.photos/seed/packaging/400/400" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Packaging" />
+                                <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                                    <span className="text-warmOffWhite font-serif text-xl">Premium Box</span>
+                                </div>
+                            </motion.div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        const Features = () => {
+            const features = [
+                { icon: IconWind, title: "Smokeless", desc: "Tanpa asap pekat, menjaga suasana makan tetap nyaman." },
+                { icon: IconFire, title: "High Heat", desc: "Kalori tinggi dan stabil, memasak lebih cepat dan merata." },
+                { icon: IconClock, title: "Long Burning", desc: "Tahan api hingga 4-5 jam tanpa perlu sering menambah arang." },
+            ];
+
+            return (
+                <section id="keunggulan" className="py-24 bg-[#151515] relative">
+                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+                    <div className="container mx-auto px-6 relative z-10">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                            {features.map((f, i) => (
+                                <motion.div 
+                                    key={i}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: i * 0.2 }}
+                                    className="text-center p-8 border border-white/5 hover:border-mutedGold/50 transition-colors duration-500 bg-white/5"
+                                >
+                                    <div className="flex justify-center text-mutedGold mb-6">
+                                        <f.icon size={40} strokeWidth={1} />
+                                    </div>
+                                    <h3 className="font-serif text-2xl text-warmOffWhite mb-3">{f.title}</h3>
+                                    <p className="text-gray-400 text-sm font-light">{f.desc}</p>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        const OrderSection = () => {
+            const handleOrder = () => {
+                const msg = "Halo, saya tertarik dengan produk Artisan Charcoal Premium. Mohon infonya.";
+                window.open(`https://wa.me/6281234567890?text=${encodeURIComponent(msg)}`, '_blank');
+            };
+
+            return (
+                <section id="pemesanan" className="py-32 bg-deepCharcoal relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-mutedGold/5 to-transparent pointer-events-none"></div>
+                    
+                    <div className="container mx-auto px-6 flex flex-col lg:flex-row items-center gap-16">
+                        <div className="lg:w-1/2">
+                            <motion.div
+                                initial={{ opacity: 0, x: -50 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                            >
+                                <img src="https://picsum.photos/seed/hands/800/1000" className="w-full h-[500px] object-cover grayscale" alt="Hands holding charcoal" />
+                            </motion.div>
+                        </div>
+                        
+                        <div className="lg:w-1/2">
+                            <motion.div
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                            >
+                                <h2 className="font-serif text-4xl md:text-6xl text-warmOffWhite mb-6">Siap Mengirim ke <span className="text-mutedGold italic">Seluruh Dunia</span></h2>
+                                <p className="text-gray-400 mb-8 leading-relaxed">
+                                    Kami menerima pesanan dalam jumlah besar (bulk) maupun eceran dengan kualitas ekspor terbaik. Konsultasikan kebutuhan Anda dengan tim kami.
+                                </p>
+                                
+                                <ul className="space-y-4 mb-10 text-gray-300 font-light">
+                                    <li className="flex items-center gap-3"><span className="text-mutedGold"><IconCheck size={18}/></span> Kualitas Ekspor Standar Internasional</li>
+                                    <li className="flex items-center gap-3"><span className="text-mutedGold"><IconCheck size={18}/></span> Pengiriman Aman & Cepat</li>
+                                    <li className="flex items-center gap-3"><span className="text-mutedGold"><IconCheck size={18}/></span> Harga Kompetitif Langsung Pabrik</li>
+                                </ul>
+
+                                <button 
+                                    onClick={handleOrder}
+                                    className="bg-mutedGold text-deepCharcoal font-bold uppercase tracking-widest px-10 py-4 hover:bg-white transition-all duration-300 flex items-center gap-3 group"
+                                >
+                                    Hubungi Kami
+                                    <span className="group-hover:translate-x-1 transition-transform"><IconArrowRight size={18} /></span>
+                                </button>
+                            </motion.div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        const Footer = () => (
+            <footer className="bg-black py-12 border-t border-white/10 text-center md:text-left">
+                <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div>
+                        <span className="font-serif text-xl text-warmOffWhite tracking-widest block mb-2">ARTISAN CHARCOAL</span>
+                        <p className="text-gray-600 text-xs">Premium Coconut Charcoal Briquettes</p>
+                    </div>
+                    <div className="text-gray-500 text-sm">
+                        &copy; {new Date().getFullYear()} Artisan Charcoal UMKM.
+                    </div>
+                </div>
+            </footer>
+        );
+
+        const App = () => {
+            return (
+                <div className="selection:bg-mutedGold selection:text-black">
+                    <Navbar />
+                    <main>
+                        <Hero />
+                        <ParallaxBreaker /> {/* Elemen visual tambahan */}
+                        <Process /> {/* Section Proses Baru */}
+                        <Gallery /> {/* Section Galeri Baru */}
+                        <Features />
+                        <OrderSection />
+                    </main>
+                    <Footer />
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
