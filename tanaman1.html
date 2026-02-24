@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kebun Indah - Toko Tanaman Hias</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #FFF8DC 0%, #FFFACD 100%);
+            color: #2D5F2D;
+            line-height: 1.6;
+        }
+
+        .poster-container {
+            width: 720px;
+            min-height: 960px;
+            margin: 0 auto;
+            background: #FFF8DC;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Wood Texture Background */
+        .wood-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(139, 90, 43, 0.03) 0%, rgba(160, 82, 45, 0.02) 100%);
+            z-index: 0;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 50px;
+            background: #FFFFFF;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #6B8E23, #228B22);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon i {
+            color: #FFFFFF;
+            font-size: 28px;
+        }
+
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: #2D5F2D;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2D5F2D;
+            font-size: 15px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #6B8E23;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, #6B8E23, #228B22);
+            color: #FFFFFF;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(107, 142, 35, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            z-index: 5;
+            padding: 50px 50px 40px;
+            background: linear-gradient(135deg, rgba(107, 142, 35, 0.08) 0%, rgba(205, 133, 63, 0.08) 100%);
+        }
+
+        .hero-content {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(205, 133, 63, 0.15);
+            color: #CD853F;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: #2D5F2D;
+            margin-bottom: 18px;
+            line-height: 1.3;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: #5A7A5A;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 12px 20px;
+            background: #FFFFFF;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+        }
+
+        .stat-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: #6B8E23;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #7A7A7A;
+            font-weight: 600;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6B8E23, #228B22);
+            color: #FFFFFF;
+            padding: 14px 35px;
+            border: none;
+            border-radius: 30px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(107, 142, 35, 0.35);
+            transition: all 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(107, 142, 35, 0.4);
+        }
+
+        .btn-secondary {
+            background: #FFFFFF;
+            color: #6B8E23;
+            padding: 14px 35px;
+            border: 2px solid #6B8E23;
+            border-radius: 30px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(107, 142, 35, 0.05);
+        }
+
+        .hero-image {
+            flex: 0 0 280px;
+            height: 220px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Products Section */
+        .products {
+            position: relative;
+            z-index: 5;
+            padding: 45px 50px;
+            background: #FFFFFF;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #2D5F2D;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            font-size: 15px;
+            color: #7A7A7A;
+            font-weight: 600;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .product-card {
+            background: #FAFAFA;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            border-color: #6B8E23;
+        }
+
+        .product-image {
+            height: 140px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: #CD853F;
+            color: #FFFFFF;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #2D5F2D;
+            margin-bottom: 5px;
+        }
+
+        .product-price {
+            font-size: 18px;
+            color: #228B22;
+            font-weight: 700;
+        }
+
+        .product-original {
+            font-size: 13px;
+            color: #9A9A9A;
+            text-decoration: line-through;
+            margin-left: 8px;
+        }
+
+        /* Features Section */
+        .features {
+            position: relative;
+            z-index: 5;
+            padding: 45px 50px;
+            background: linear-gradient(135deg, rgba(107, 142, 35, 0.05) 0%, rgba(205, 133, 63, 0.05) 100%);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 25px 20px;
+            background: #FFFFFF;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 15px;
+            background: linear-gradient(135deg, rgba(107, 142, 35, 0.15), rgba(34, 139, 34, 0.15));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-icon i {
+            font-size: 32px;
+            color: #6B8E23;
+        }
+
+        .feature-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 17px;
+            font-weight: 600;
+            color: #2D5F2D;
+            margin-bottom: 8px;
+        }
+
+        .feature-desc {
+            font-size: 13px;
+            color: #7A7A7A;
+            line-height: 1.6;
+        }
+
+        /* About Section */
+        .about {
+            position: relative;
+            z-index: 5;
+            padding: 45px 50px;
+            background: #FFFFFF;
+        }
+
+        .about-content {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .about-image {
+            flex: 0 0 220px;
+            height: 200px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: #2D5F2D;
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            font-size: 15px;
+            color: #5A7A5A;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        /* Contact Section */
+        .contact {
+            position: relative;
+            z-index: 5;
+            padding: 40px 50px;
+            background: linear-gradient(135deg, #6B8E23, #228B22);
+        }
+
+        .contact-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-text h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 10px;
+        }
+
+        .contact-text p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        .contact-items {
+            display: flex;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 10px 20px;
+            border-radius: 25px;
+            backdrop-filter: blur(5px);
+        }
+
+        .contact-item i {
+            color: #FFFFFF;
+            font-size: 20px;
+        }
+
+        .contact-item span {
+            color: #FFFFFF;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            position: relative;
+            z-index: 5;
+            padding: 20px 50px;
+            background: #2D5F2D;
+            text-align: center;
+        }
+
+        .footer p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 13px;
+            font-weight: 400;
+        }
+
+        .footer-highlight {
+            color: #9DC183;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="poster-container">
+        <!-- Wood Background -->
+        <div class="wood-bg"></div>
+
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="material-icons">local_florist</i>
+                </div>
+                <span class="logo-text">Kebun Indah</span>
+            </div>
+            <div class="nav-links">
+                <a href="#">Beranda</a>
+                <a href="#">Katalog</a>
+                <a href="#">Cara Order</a>
+                <a href="#" class="nav-cta">Hubungi Kami</a>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="hero-badge">🌱 UMKM Lokal Terpercaya</span>
+                    <h1>Tanamkan Kecantikan di Setiap Sudut Rumah</h1>
+                    <p>Percantik rumah dengan tanaman hias pilihan kami. Harga terjangkau, kualitas terjamin, dan dikirim langsung ke rumahmu!</p>
+                    
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Jenis Tanaman</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">2RB+</span>
+                            <span class="stat-label">Pelanggan Puas</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Garansi Hidup</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-buttons">
+                        <button class="btn-primary">Lihat Katalog</button>
+                        <button class="btn-secondary">Konsultasi Gratis</button>
+                    </div>
+                </div>
+                
+                <div class="hero-image">
+                    <img src="https://sfile.chatglm.cn/images-ppt/abe8def35a05.jpg" alt="Koleksi Tanaman Hias">
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section class="products">
+            <div class="section-header">
+                <h2 class="section-title">Tanaman Best Seller</h2>
+                <p class="section-subtitle">Pilihan terfavorit para pelanggan kami</p>
+            </div>
+            
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://sfile.chatglm.cn/images-ppt/f76ed8bc0cf8.jpg" alt="Aglaonema">
+                        <span class="product-tag">Terlaris</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Aglaonema Pink</div>
+                        <div class="product-price">Rp 45.000</div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://sfile.chatglm.cn/images-ppt/b68fa5c38118.jpg" alt="Syngonium">
+                        <span class="product-tag">Promo</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Syngonium</div>
+                        <div class="product-price">Rp 35.000 <span class="product-original">Rp 50.000</span></div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://sfile.chatglm.cn/images-ppt/67463f8460ca.jpg" alt="Succulent">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">Succulent Mix</div>
+                        <div class="product-price">Rp 25.000</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="material-icons">payments</i>
+                    </div>
+                    <div class="feature-title">Harga Terjangkau</div>
+                    <div class="feature-desc">Mulai dari Rp 25.000, tanaman berkualitas untuk semua kalangan</div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="material-icons">support_agent</i>
+                    </div>
+                    <div class="feature-title">Konsultasi Gratis</div>
+                    <div class="feature-desc">Tim kami siap membantu pilih tanaman sesuai kebutuhan ruanganmu</div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="material-icons">local_shipping</i>
+                    </div>
+                    <div class="feature-title">Pengiriman Aman</div>
+                    <div class="feature-desc">Dikemas dengan aman, garansi tanaman sampai dalam kondisi baik</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://sfile.chatglm.cn/images-ppt/bdabc7ad20b2.jpeg" alt="Tentang Kami">
+                </div>
+                <div class="about-text">
+                    <h3>Lebih dari Sekadar Tanaman</h3>
+                    <p>Kami adalah UMKM lokal yang berkomitmen menghadirkan tanaman hias berkualitas dengan harga yang ramah di kantong. Setiap tanaman dipilih dan dirawat dengan cinta.</p>
+                    <p>Punya pertanyaan atau butuh rekomendasi? Chat kami kapan saja, gratis!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact">
+            <div class="contact-content">
+                <div class="contact-text">
+                    <h3>Punya Pertanyaan?</h3>
+                    <p>Hubungi kami sekarang untuk konsultasi gratis atau pemesanan</p>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <i class="material-icons">chat</i>
+                            <span>WhatsApp</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="material-icons">photo_camera</i>
+                            <span>Instagram</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2024 <span class="footer-highlight">Kebun Indah</span> - UMKM Tanaman Hias Indonesia | Melayani dengan Sepenuh Hati</p>
+        </footer>
+    </div>
+</body>
+</html>
